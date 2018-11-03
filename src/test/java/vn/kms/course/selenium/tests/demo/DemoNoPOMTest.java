@@ -1,4 +1,4 @@
-package vn.kms.course.selenium.tests;
+package vn.kms.course.selenium.tests.demo;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,17 +21,19 @@ public class DemoNoPOMTest extends BaseTest{
     WebDriver driver;
     @BeforeEach
     public void beforeEach() throws MalformedURLException {
-        driver = new ChromeDriver();
+        driver = new SafariDriver();
 
-        //driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), DesiredCapabilities.edge());
+        //driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), DesiredCapabilities.safari());
     }
     @Test
     public void loginSuccessfully(){
-
         driver.get("http://192.168.74.25/patest");
         driver.findElement(By.id("username")).sendKeys("thaovo");
         driver.findElement(By.id("password")).sendKeys("kms");
         driver.findElement(By.id("btnSubmit")).click();
         Assertions.assertEquals("Home | PA Tool", driver.getTitle());
     }
+
+
+
 }
